@@ -1,0 +1,8 @@
+fitnova/
+│
+├── frontend/     ← New folder
+├── backend/      ← Existing backend
+├── src/          ← Existing frontend
+├── public/
+├── package.json
+└── node_modules/
