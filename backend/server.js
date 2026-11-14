@@ -14,7 +14,17 @@ const feedbackRoutes = require("./routes/feedbackRoutes");
 const app = express();
 exports.app = app;
 
-app.use(cors());
+// CLIENT_ORIGIN set ho to sirf wahi origins allow honge, warna sab allowed.
+const allowedOrigins = (process.env.CLIENT_ORIGIN || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins.length > 0 ? allowedOrigins : true,
+  })
+);
 app.use(express.json());
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/auth", authRoutes);
